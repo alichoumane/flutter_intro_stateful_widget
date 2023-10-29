@@ -9,11 +9,36 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String _text = '';
+  double _x = -1;
+  double _y = -1;
 
-  void updateText(String text){
+  void updateText(){
     setState(() {
-      _text = text;
+      if (_x == -1 || _y == -1) {
+        _text = 'Please fill all fields';
+      }
+      else {
+        _text = "Sum = " + (_x + _y).toString();
+      }
     });
+  }
+
+  void updateX(String x){
+    if (x.trim() == '') {
+      _x = -1;
+    }
+    else {
+      _x = double.parse(x);
+    }
+  }
+
+  void updateY(String y){
+    if (y.trim() == '') {
+      _y = -1;
+    }
+    else {
+      _y = double.parse(y);
+    }
   }
 
   @override
@@ -27,13 +52,19 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             const SizedBox(height: 20.0,),
-            Text('You typed $_text',
+            Text('$_text',
               style: TextStyle(
                 fontSize: 20
               ),
             ),
             const SizedBox(height:20.0),
-            MyTextField(f: updateText, hint: "Enter some text")
+            MyTextField(f: updateX, hint: "Enter X"),
+            const SizedBox(height:20.0),
+            MyTextField(f: updateY, hint: "Enter Y"),
+            const SizedBox(height:20.0),
+            ElevatedButton(
+                onPressed: (){updateText();},
+                child: Text("Sum", style: TextStyle(fontSize: 20),))
           ],
         )
         )
