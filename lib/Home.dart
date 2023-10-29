@@ -12,6 +12,16 @@ class _HomeState extends State<Home> {
   double _x = -1;
   double _y = -1;
 
+  String image = "assets/image1.jpg";
+  List<String> images = [
+    'assets/image1.jpg',
+    'assets/image2.jpg',
+    'assets/image3.jpg',
+    'assets/image4.png'
+  ];
+
+  static int counter = 1;
+
   void updateText(){
     setState(() {
       if (_x == -1 || _y == -1) {
@@ -19,6 +29,8 @@ class _HomeState extends State<Home> {
       }
       else {
         _text = "Sum = " + (_x + _y).toString();
+        image = images[(counter++) % images.length];
+
       }
     });
   }
@@ -62,9 +74,14 @@ class _HomeState extends State<Home> {
             const SizedBox(height:20.0),
             MyTextField(f: updateY, hint: "Enter Y"),
             const SizedBox(height:20.0),
-            ElevatedButton(
-                onPressed: (){updateText();},
-                child: Text("Sum", style: TextStyle(fontSize: 20),))
+            Container(
+              margin: EdgeInsets.all(20.0),
+              child: ElevatedButton(
+                  onPressed: (){updateText();},
+                  child: Text("Sum", style: TextStyle(fontSize: 40),)
+              ),
+            ),
+            Image.asset(image, width: 250.0, height: 250.0),
           ],
         )
         )
