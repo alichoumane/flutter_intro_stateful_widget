@@ -33,19 +33,32 @@ class _HomeState extends State<Home> {
               ),
             ),
             const SizedBox(height:20.0),
-            SizedBox(width: 200, height:50.0,
-            child: TextField(
-              style: const TextStyle(fontSize: 20),
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'Enter some text'
-              ),
-              onChanged: (text){updateText(text);},
-            ),
-            ),
+            MyTextField(f: updateText, hint: "Enter some text")
           ],
         )
         )
     );
   }
 }
+
+class MyTextField extends StatelessWidget {
+  Function(String) f;
+  String hint;
+
+  MyTextField({required this.f, required this.hint, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(width: 200, height:50.0,
+      child: TextField(
+        style: const TextStyle(fontSize: 20),
+        decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            hintText: hint
+        ),
+        onChanged: (text){f(text);},
+      ),
+    );
+  }
+}
+
