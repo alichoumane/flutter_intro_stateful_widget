@@ -1,1 +1,1 @@
-# mobile-project2
+This branch demonstrates the use of images.
