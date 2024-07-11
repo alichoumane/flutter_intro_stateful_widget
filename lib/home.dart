@@ -13,6 +13,8 @@ class _HomeState extends State<Home> {
   double _y = -1;
 
   String _image = "assets/image1.jpg";
+
+  // List of available images
   List<String> _images = [
     'assets/image1.jpg',
     'assets/image2.jpg',
