@@ -13,7 +13,7 @@ class _HomeState extends State<Home> {
   double _y = -1;
 
   String _image = "assets/image1.jpg";
-  List<String> images = [
+  List<String> _images = [
     'assets/image1.jpg',
     'assets/image2.jpg',
     'assets/image3.jpg',
@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
       }
       else {
         _text = "Sum = " + (_x + _y).toString();
-        _image = images[(counter++) % images.length];
+        _image = _images[(counter++) % _images.length];
 
       }
     });
