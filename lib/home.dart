@@ -12,7 +12,7 @@ class _HomeState extends State<Home> {
   double _x = -1;
   double _y = -1;
 
-  String image = "assets/image1.jpg";
+  String _image = "assets/image1.jpg";
   List<String> images = [
     'assets/image1.jpg',
     'assets/image2.jpg',
@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
       }
       else {
         _text = "Sum = " + (_x + _y).toString();
-        image = images[(counter++) % images.length];
+        _image = images[(counter++) % images.length];
 
       }
     });
@@ -81,7 +81,7 @@ class _HomeState extends State<Home> {
                   child: Text("Sum", style: TextStyle(fontSize: 40),)
               ),
             ),
-            Image.asset(image, width: 250.0, height: 250.0),
+            Image.asset(_image, width: 250.0, height: 250.0),
           ],
         )
         )
